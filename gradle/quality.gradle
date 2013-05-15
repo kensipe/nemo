@@ -1,0 +1,14 @@
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+apply plugin: 'project-report'
+apply plugin: 'jdepend'
+
+
+//findbugs {
+//    excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
+//}
+// this is the current fix
+tasks.withType(FindBugs) {
+  excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
+}

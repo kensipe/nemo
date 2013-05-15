@@ -1,0 +1,11 @@
+// used for unit tests
+apply plugin: 'groovy'
+
+def spockVersion = '0.5-groovy-1.8'
+
+dependencies {	
+    groovy 'org.codehaus.groovy:groovy-all:1.8.3'
+    testCompile "org.spockframework:spock-core:$spockVersion"
+    testCompile "org.spockframework:spock-spring:$spockVersion"   
+}
+
