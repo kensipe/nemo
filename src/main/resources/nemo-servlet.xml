@@ -13,6 +13,7 @@
 
     <bean id="urlMapping" class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
+    <mvc:annotation-driven />
 
     <mvc:view-controller path="/500.html" view-name="500"/>
 

@@ -21,7 +21,7 @@
 <!-- /wrapper -->
 <div id="pageBttm">
     <div id="pageBttmContent">
-        <p id="pageLegal"><spring:message code="app.copyright"/></p>
+        <p id="pageLegal"></p>
         <ul id="pageBttmNav">
             <li id="termsUse"></li>
             <li id="privPol"></li>
