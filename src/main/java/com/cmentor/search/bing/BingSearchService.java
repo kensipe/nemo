@@ -5,6 +5,7 @@ import com.cmentor.search.SearchService;
 import com.cmentor.search.bing.model.BingResults;
 import com.cmentor.search.bing.model.BingSearchResultLink;
 import com.cmentor.search.bing.service.BingInternalSearchService;
+import com.cmentor.search.bing.service.BingListTransformer;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,8 +35,8 @@ public class BingSearchService implements SearchService {
     public List<SearchResultLink> search(String criteria) {
 
         List<BingSearchResultLink> bingLinks = getBingSearchResults(criteria);
-//        List<SearchResultLink> links =
-        return null;
+        List<SearchResultLink> links = BingListTransformer.transform(bingLinks);
+        return links;
     }
 
     private List<BingSearchResultLink> getBingSearchResults(String criteria) {
