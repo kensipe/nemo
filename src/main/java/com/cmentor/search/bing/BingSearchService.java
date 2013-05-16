@@ -26,6 +26,7 @@ import java.util.List;
 public class BingSearchService implements SearchService {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
+    private static final String SERVICE_NAME = "bing";
 
     @Autowired
     private BingInternalSearchService searchService;
@@ -37,6 +38,11 @@ public class BingSearchService implements SearchService {
         List<BingSearchResultLink> bingLinks = getBingSearchResults(criteria);
         List<SearchResultLink> links = BingListTransformer.transform(bingLinks);
         return links;
+    }
+
+    @Override
+    public String serviceName() {
+        return SERVICE_NAME;
     }
 
     private List<BingSearchResultLink> getBingSearchResults(String criteria) {

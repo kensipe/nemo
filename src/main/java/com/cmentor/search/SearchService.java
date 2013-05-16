@@ -8,4 +8,6 @@ import java.util.List;
 public interface SearchService {
 
     List<SearchResultLink> search(String criteria);
+
+    String serviceName();
 }

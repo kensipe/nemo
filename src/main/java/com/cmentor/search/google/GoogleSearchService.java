@@ -23,6 +23,7 @@ import java.util.List;
 public class GoogleSearchService implements SearchService {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
+    private static final String SERVICE_NAME = "google";
 
     @Autowired
     GoogleInternalSearchService searchService;
@@ -34,6 +35,11 @@ public class GoogleSearchService implements SearchService {
         List<GoogleSearchResultLink> googleLinks = getGoogleSearchResults(criteria);
         List<SearchResultLink> links = GoogleListTransformer.transform(googleLinks);
         return links;
+    }
+
+    @Override
+    public String serviceName() {
+        return SERVICE_NAME;
     }
 
     private List<GoogleSearchResultLink> getGoogleSearchResults(String criteria) {
