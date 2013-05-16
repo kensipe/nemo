@@ -40,7 +40,7 @@ dependencies {
 
     // object model serialization, xml to file, json to ground
     compile 'com.thoughtworks.xstream:xstream:1.4.2'     // used for user object serialization
-    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.3'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.12'
 
     testCompile "org.springframework:spring-test:$springVersion"
     testCompile 'junit:junit:4.8.1'
