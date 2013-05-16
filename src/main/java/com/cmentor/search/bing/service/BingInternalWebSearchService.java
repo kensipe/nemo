@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -48,32 +47,39 @@ public class BingInternalWebSearchService implements BingInternalSearchService {
      */
     public String search(String query) {
 
-        // todo:  refactor and better error handling
-        DefaultHttpClient httpClient = new DefaultHttpClient();
+        String urlValue = buildUrl(query);
+        DefaultHttpClient httpClient = getDefaultHttpClient();
 
+        HttpResponse response;
+        String json;
+        try {
+            HttpGet httpGet = new HttpGet(urlValue);
+            response = httpClient.execute(httpGet);
+            json = EntityUtils.toString(response.getEntity());
+        } catch (IOException e) {
+            logger.error("failure to GET http response", e);
+            json = "";
+        }
+
+        return json;
+    }
+
+    private DefaultHttpClient getDefaultHttpClient() {
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        httpClient.getCredentialsProvider().setCredentials(
+                new AuthScope(url.getHost(), url.getPort(), AuthScope.ANY_SCHEME),
+                new UsernamePasswordCredentials(user, password));
+        return httpClient;
+    }
+
+    private String buildUrl(String query) {
         logger.debug("http GET request to {} with user: {}", url, user);
         StringBuilder urlQuery = new StringBuilder(url.toString());
         urlQuery.append("?$format=JSON&")
                 .append(QueryParamUtil.encodeParamValue("Query", bingifyQuery(query)));
-
-        logger.debug("query: {}", urlQuery.toString());
-        HttpGet httpGet = new HttpGet(urlQuery.toString());
-
-        httpClient.getCredentialsProvider().setCredentials(
-                new AuthScope(url.getHost(), url.getPort(), AuthScope.ANY_SCHEME),
-                new UsernamePasswordCredentials(user, password));
-
-
-        HttpResponse response = null;
-        String json = null;
-        try {
-            response = httpClient.execute(httpGet);
-            json = EntityUtils.toString(response.getEntity());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return json;
+        String urlValue = urlQuery.toString();
+        logger.debug("query: {}", urlValue);
+        return urlValue;
     }
 
     /**
