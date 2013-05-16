@@ -56,7 +56,7 @@ public class BingSearchService implements SearchService {
         if (StringUtils.isNotBlank(json)) {
             try {
                 BingResults results = parser.parse(json);
-                links = results.getBingData().getResults();
+                links = results.getData().getResults();
             } catch (IOException e) {
                 logger.error("unable to parse json: {}", json, e);
 

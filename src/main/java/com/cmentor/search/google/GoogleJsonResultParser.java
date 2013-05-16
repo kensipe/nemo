@@ -1,36 +1,35 @@
-package com.cmentor.search.bing;
+package com.cmentor.search.google;
 
 import com.cmentor.search.bing.model.BingResults;
+import com.cmentor.search.google.model.GoogleResults;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
 /**
  * @author kensipe
  */
-@Component
-public class BingJsonResultParser {
+public class GoogleJsonResultParser {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     ObjectMapper jsonMapper = null;
 
-    public BingJsonResultParser() {
+    public GoogleJsonResultParser() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
         jsonMapper = mapper;
     }
 
-    public BingResults parse(String json) throws IOException {
-        BingResults results;
+    public GoogleResults parse(String json) throws IOException {
+        GoogleResults results;
         try {
-            results = jsonMapper.readValue(json, BingResults.class);
+            results = jsonMapper.readValue(json, GoogleResults.class);
         } catch (IOException e) {
-            logger.error("unable to parse json for bing", e);
+            logger.error("unable to parse json for google", e);
             throw e;
         }
         return results;

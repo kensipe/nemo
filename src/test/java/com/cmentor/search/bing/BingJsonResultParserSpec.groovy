@@ -18,8 +18,8 @@ class BingJsonResultParserSpec extends Specification {
         def result = parser.parse(json)
 
         then:
-        result.bingData.results.size() == 3
-        with(result.bingData.results[0]) {
+        result.data.results.size() == 3
+        with(result.data.results[0]) {
             title == "Ken Sipe | LinkedIn"
             description == "View Ken Sipe's professional profile on LinkedIn."
             url == "http://www.linkedin.com/in/kensipe"

@@ -1,4 +1,4 @@
-package com.cmentor.search.bing.model;
+package com.cmentor.search.google.model;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
@@ -7,16 +7,16 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * @author kensipe
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BingResults {
+public class GoogleResults {
 
-    @JsonProperty("d")
-    private BingData data;
+    @JsonProperty("responseData")
+    private GoogleData data;
 
-    public BingData getData() {
+    public GoogleData getData() {
         return data;
     }
 
-    public void setData(BingData data) {
+    public void setData(GoogleData data) {
         this.data = data;
     }
 }
