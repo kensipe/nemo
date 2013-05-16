@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 /**
+ * This is the external exposed search service which transforms the bing search into the canonical search result model
+ *
  * @author kensipe
  */
 public class BingSearchService implements SearchService {
