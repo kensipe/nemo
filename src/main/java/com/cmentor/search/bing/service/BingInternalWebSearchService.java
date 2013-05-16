@@ -45,6 +45,7 @@ public class BingInternalWebSearchService implements BingInternalSearchService {
      * @param query
      * @return
      */
+    @Override
     public String search(String query) {
 
         String urlValue = buildUrl(query);
