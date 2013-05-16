@@ -78,6 +78,4 @@ class BingSearchServiceSpec extends Specification {
             	}
             }""" as String
     }
-
-
 }
