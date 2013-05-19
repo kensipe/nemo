@@ -11,9 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author kensipe
  */
@@ -33,22 +30,42 @@ public class SearchController {
                       @RequestParam(required = false) String q,
                       @RequestParam(required = false) String strategy) {
 
+        q = StringUtils.trimToEmpty(q);
         command.setQ(q);
-        command.setStrategy(strategy);
-        command.getStrategyList().addAll(searchService.getStrategyNames());
 
-//        if (StringUtils.isNotBlank(q)) {
-            List<SearchResultLink> links = new ArrayList<SearchResultLink>(4);
-            links.add(makeLink("title1", "http://google.com", "google"));
-            links.add(makeLink("title2", "http://google.com", "google"));
-            links.add(makeLink("title3", "http://google.com", "bing"));
-            links.add(makeLink("title4", "http://google.com", "bing"));
-            links.add(makeLink("title5", "http://google.com", "google"));
-            command.setLinks(links);
-//        }
+        command.getStrategyList().addAll(searchService.getStrategyNames());
+        command.setStrategy(verifyStrategy(StringUtils.trimToEmpty(strategy).toLowerCase()));
+
+        if (StringUtils.isNotBlank(q)) {
+            if (StringUtils.isBlank(command.getStrategy())) {
+                command.setLinks(searchService.search(q));
+            } else {
+                command.setLinks(searchService.search(q, strategy));
+            }
+        }
 
         model.addAttribute("searchForm", command);
-        // todo:  some time there will be a model here
+    }
+
+    private String verifyStrategy(String strategy) {
+        String validStrategy = strategy;
+        if (StringUtils.isBlank(strategy) || !isInStrategyList(strategy)) {
+            validStrategy = "";
+        }
+        return validStrategy;
+    }
+
+    private boolean isInStrategyList(String strategy) {
+        boolean isInList = false;
+        strategy = StringUtils.trimToEmpty(strategy).toLowerCase();
+
+        for (String knownStrategies : searchService.getStrategyNames()) {
+            if (strategy.equals(knownStrategies)) {
+                isInList = true;
+                break;
+            }
+        }
+        return isInList;
     }
 
     private SearchResultLink makeLink(String title, String url, String service) {
