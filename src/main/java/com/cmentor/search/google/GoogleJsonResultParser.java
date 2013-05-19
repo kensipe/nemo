@@ -1,6 +1,5 @@
 package com.cmentor.search.google;
 
-import com.cmentor.search.bing.model.BingResults;
 import com.cmentor.search.google.model.GoogleResults;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;

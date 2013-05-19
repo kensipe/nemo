@@ -16,7 +16,7 @@ public class URLEncoderUtil {
     public static String encode(String value) {
         String encodedValue = "";
         try {
-            encodedValue =  URLEncoder.encode(value, "utf-8");
+            encodedValue = URLEncoder.encode(value, "utf-8");
         } catch (UnsupportedEncodingException e) {
             logger.error("failure to encoder parm value", value, e);
         }

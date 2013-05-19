@@ -2,6 +2,7 @@ package com.cmentor.search;
 
 /**
  * All search engines must transform to this type
+ *
  * @author kensipe
  */
 public class SearchResultLink {

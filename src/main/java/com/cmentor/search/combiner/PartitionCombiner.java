@@ -15,7 +15,7 @@ import java.util.Set;
 public class PartitionCombiner {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    private static int DEFAULT_PARTITION = 1;
+    public static final int DEFAULT_PARTITION = 1;
 
     private Map<String, Integer> enginePartitionSizeMap;
     private int partitionSize = DEFAULT_PARTITION;
@@ -65,8 +65,9 @@ public class PartitionCombiner {
         logger.debug("using partition sizes of {} ", partitionSizeMap);
 
         Map<String, List> linkPartitionedMap = new HashMap<String, List>();
-        for (String engine : linksMap.keySet()) {
-            linkPartitionedMap.put(engine, CombinerStrategyUtil.partition(linksMap.get(engine), getPartitionSize(partitionSizeMap, engine)));
+        for (Map.Entry engineEntry : linksMap.entrySet()) {
+            String key = (String) engineEntry.getKey();
+            linkPartitionedMap.put(key, CombinerStrategyUtil.partition((List<SearchResultLink>) engineEntry.getValue(), getPartitionSize(partitionSizeMap, key)));
         }
         return linkPartitionedMap;
     }

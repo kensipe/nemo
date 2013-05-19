@@ -20,7 +20,6 @@ class RandomPartitionStrategySpec extends Specification {
 
         // this test doesn't test randomness... it makes sure that the random number is used properly
         strategy.getRandomNumber() >>> [1, 2]
-        // todo:  test when a partition is bigger than the list
 
         when:
         def result = strategy.combine(searchMap)

@@ -21,7 +21,7 @@ import java.util.Set;
 public class NemoSearchService {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
-    private final static String DEFAULT_STRATEGY = "even_weighted_single";
+    private static final String DEFAULT_STRATEGY = "even_weighted_single";
 
     @Autowired
     private List<SearchService> searchServices;

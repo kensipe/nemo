@@ -84,6 +84,20 @@ class CombinerStrategyUtilSpec extends Specification {
         ["bing": bingListOfLists(), "google": googleListOfLists()] | 6    | 1        | "google"
     }
 
+    def "partitioning of lists"() {
+
+        expect:
+        listSize == CombinerStrategyUtil.partition(googleListOfLists().flatten(), partitionSize).size();
+
+        where:
+        listSize | partitionSize
+        4        | 1
+        2        | 2
+        1        | 4
+        1        | 5    // if partition is larger than list we are ok
+
+    }
+
 
     def googleListOfLists() {
         [[new SearchResultLink(title: "1", source: "google"), new SearchResultLink(title: "2", source: "google")], [new SearchResultLink(title: "3", source: "google"), new SearchResultLink(title: "4", source: "google")]]

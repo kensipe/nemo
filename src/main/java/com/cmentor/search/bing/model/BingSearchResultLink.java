@@ -2,8 +2,6 @@ package com.cmentor.search.bing.model;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author kensipe

@@ -50,6 +50,7 @@ public class BingInternalWebSearchService implements BingInternalSearchService {
         } catch (MalformedURLException e) {
             // todo:  don't remember.. initialization failure
 //            throw new
+            logger.error("failure to init bing service url", e);
         }
     }
 

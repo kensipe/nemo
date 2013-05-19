@@ -23,7 +23,7 @@ import java.util.Set;
 public class RandomPartitionStrategy implements CombinerStrategy {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
-    private final static int DEFAULT_RANDOM_LIMIT = 3;
+    public static final int DEFAULT_RANDOM_LIMIT = 3;
     private int randomLimit = DEFAULT_RANDOM_LIMIT;
 
     public RandomPartitionStrategy() {
