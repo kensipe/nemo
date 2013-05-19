@@ -26,4 +26,49 @@ class EvenWeightedSingleStrategySpec extends Specification {
         result.get(2).source == "google"
         result.get(3).source == "bing"
     }
+
+    def "fails fast on null map"() {
+        given:
+        def searchMap = null
+
+        when:
+        def result = strategy.combine(searchMap)
+
+        then:
+        result.size() == 0
+        notThrown(Exception)
+
+    }
+
+    def "fails fast on no lists in map"() {
+        given:
+        def searchMap = [:]
+        searchMap.google = null
+        searchMap.bing = null
+
+        when:
+        def result = strategy.combine(searchMap)
+
+        then:
+        result.size() == 0
+        notThrown(Exception)
+
+    }
+
+    def "fails fast on no list > 0 size in map"() {
+        given:
+        def searchMap = [:]
+        searchMap.google = null
+        searchMap.bing = []
+
+        when:
+        def result = strategy.combine(searchMap)
+
+        then:
+        result.size() == 0
+        notThrown(Exception)
+
+
+    }
+
 }

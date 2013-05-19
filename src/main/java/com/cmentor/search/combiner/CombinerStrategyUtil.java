@@ -23,6 +23,16 @@ public class CombinerStrategyUtil {
         return notNull;
     }
 
+    public static boolean atLeastOneListIsNotEmpty(Map<String, List<SearchResultLink>> resultsMap) {
+        boolean notNull = false;
+        if (resultsMap != null) {
+            for (List<SearchResultLink> list : resultsMap.values()) {
+                notNull = notNull || (list != null && list.size() > 0);
+            }
+        }
+        return notNull;
+    }
+
     public static List<List<SearchResultLink>> partition(List<SearchResultLink> list, int size) {
         return Lists.partition(list, size);
     }

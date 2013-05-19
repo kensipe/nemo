@@ -26,7 +26,7 @@ public class EvenWeightedSingleStrategy implements CombinerStrategy {
 
         List<SearchResultLink> results = new ArrayList<SearchResultLink>();
         // fail fast
-        if (linksMap == null && CombinerStrategyUtil.atLeastOneListIsNotNull(linksMap)) {
+        if (linksMap == null || !CombinerStrategyUtil.atLeastOneListIsNotEmpty(linksMap)) {
             logger.debug("failing fast, no lists provided");
             return results;
         }

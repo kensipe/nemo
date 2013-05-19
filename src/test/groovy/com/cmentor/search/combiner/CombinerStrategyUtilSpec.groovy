@@ -2,6 +2,7 @@ package com.cmentor.search.combiner
 
 import com.cmentor.search.SearchResultLink
 import spock.lang.Specification
+import spock.lang.Unroll
 
 /**
  *
@@ -9,7 +10,7 @@ import spock.lang.Specification
  */
 class CombinerStrategyUtilSpec extends Specification {
 
-    def "null check lists on the map"() {
+    def "null check lists on one is not null"() {
 
         expect:
         result == CombinerStrategyUtil.atLeastOneListIsNotNull(map)
@@ -20,6 +21,22 @@ class CombinerStrategyUtilSpec extends Specification {
         true   | ["google": ["test", "test"], "bing": []]
         true   | ["google": [], "bing": []]
         true   | ["google": [], "bing": null]
+        false  | ["google": null, "bing": null]
+        false  | null
+    }
+
+    @Unroll
+    def "null check lists on one is not empty"() {
+
+        expect:
+        result == CombinerStrategyUtil.atLeastOneListIsNotEmpty(map)
+
+        where:
+        result | map
+        true   | ["google": ["test", "test"]]
+        true   | ["google": ["test", "test"], "bing": []]
+        false  | ["google": [], "bing": []]
+        false  | ["google": [], "bing": null]
         false  | ["google": null, "bing": null]
         false  | null
     }
