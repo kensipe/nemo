@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,9 +16,10 @@ import java.util.Map;
  * @author kensipe
  */
 
-public class EvenWeightedStrategy implements CombinerStrategy {
+public class EvenWeightedSingleStrategy implements CombinerStrategy {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
+    PartitionCombiner combiner = new PartitionCombiner();
 
     @Override
     public List<SearchResultLink> combine(Map<String, List<SearchResultLink>> linksMap) {
@@ -31,11 +31,7 @@ public class EvenWeightedStrategy implements CombinerStrategy {
             return results;
         }
 
-        Map<String, List> linkPartitionedMap = new HashMap<String, List>();
-        for (String engine : linksMap.keySet()) {
-            linkPartitionedMap.put(engine, CombinerStrategyUtil.partition(linksMap.get(engine), 1));
-        }
-        results = CombinerStrategyUtil.combine(linkPartitionedMap);
+        results = combiner.combine(linksMap);
         return results;
     }
 }

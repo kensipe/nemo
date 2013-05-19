@@ -7,9 +7,9 @@ import spock.lang.Specification
  *
  * @author kensipe
  */
-class EvenWeightedStrategySpec extends Specification {
+class EvenWeightedSingleStrategySpec extends Specification {
 
-    def strategy = new EvenWeightedStrategy()
+    def strategy = new EvenWeightedSingleStrategy()
 
     def "one to one interleave"() {
         given:
@@ -25,6 +25,5 @@ class EvenWeightedStrategySpec extends Specification {
         result.get(1).source == "bing"
         result.get(2).source == "google"
         result.get(3).source == "bing"
-
     }
 }
