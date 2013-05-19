@@ -18,7 +18,7 @@ public class PartitionCombiner {
     private static int DEFAULT_PARTITION = 1;
 
     private Map<String, Integer> enginePartitionSizeMap;
-    private int partitionSize;
+    private int partitionSize = DEFAULT_PARTITION;
 
     /**
      * you can control individual partition sizes through the map... otherwise it is balanced

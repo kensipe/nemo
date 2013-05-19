@@ -10,7 +10,7 @@ import spock.lang.Specification
 class EvenWeightedDoubleStrategySpec extends Specification {
     def strategy = new EvenWeightedDoubleStrategy()
 
-    def "one to one interleave"() {
+    def "2 by 2 interleave"() {
         given:
         def searchMap = [:]
         searchMap.google = [new SearchResultLink(title: "g1", source: "google"), new SearchResultLink(title: "g2", source: "google")]
