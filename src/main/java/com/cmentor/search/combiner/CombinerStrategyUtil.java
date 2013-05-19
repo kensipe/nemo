@@ -64,11 +64,14 @@ public class CombinerStrategyUtil {
         Map<Integer, String> engineMap = getEngineIndexMap(mapOfListsOfLists);
         int searchEngineMaxIndex = engineMap.keySet().size();
 
+        // magic is here on the combination
         for (int partitionListIndex = 0; partitionListIndex < partitionListMaxIndex; partitionListIndex++) {
             for (int searchEngineIndex = 0; searchEngineIndex < searchEngineMaxIndex; searchEngineIndex++) {
-                List currentPartition = (List) mapOfListsOfLists.get(engineMap.get(searchEngineIndex)).get(partitionListIndex);
-                if (currentPartition != null) {
-                    result.addAll(currentPartition);
+                if (partitionListIndex < mapOfListsOfLists.get(engineMap.get(searchEngineIndex)).size()) {
+                    List currentPartition = (List) mapOfListsOfLists.get(engineMap.get(searchEngineIndex)).get(partitionListIndex);
+                    if (currentPartition != null) {
+                        result.addAll(currentPartition);
+                    }
                 }
             }
         }

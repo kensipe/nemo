@@ -46,7 +46,6 @@ public class RandomPartitionStrategy implements CombinerStrategy {
         PartitionCombiner combiner = new PartitionCombiner(partitionMap);
 
 
-
         results = combiner.combine(linksMap);
         return results;
     }
@@ -59,7 +58,7 @@ public class RandomPartitionStrategy implements CombinerStrategy {
         return sizeMap;
     }
 
-    private Integer getRandomNumber() {
+    public Integer getRandomNumber() {
         return (int) (Math.random() * randomLimit) + 1;
     }
 }
