@@ -5,31 +5,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-    <title><decorator:title default="Nemo Search"/></title><decorator:head/>
-
-
-    <!-- Fav and touch icons -->
-    <link rel="shortcut icon" href="/images/favicon.ico">
 
 </head>
 
 <body>
 
-<!-- /wrapper -->
-<div id="pageBttm">
-    <div id="pageBttmContent">
-        <p id="pageLegal"></p>
-        <ul id="pageBttmNav">
-            <li id="termsUse"></li>
-            <li id="privPol"></li>
-        </ul>
+
+<div id="wrapper">
+
+    <div id="contentWrap">
+
+        <div id="content">
+
+            <decorator:getProperty property="page.contentHeader"/>
+
+            <div id="contentBody">
+                <div id="main">
+                    <decorator:body/>
+                </div>
+                <!-- /main -->
+                <decorator:getProperty property="page.side-bar"/>
+            </div>
+            <!-- /contentBody -->
+
+        </div>
+        <!-- /content -->
     </div>
-    <!-- /pageBttmContent -->
+    <!-- /contentWrap -->
 </div>
-<!-- /pageBttm -->
+<!-- /wrapper -->
 
 </body>
 </html>

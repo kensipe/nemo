@@ -12,7 +12,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -37,7 +39,19 @@ public class BingInternalWebSearchService implements BingInternalSearchService {
     private String password;
 
     @Value("bing.url")
+    private String urlStr;
+
     private URL url;
+
+    @PostConstruct
+    public void init() {
+        try {
+            url = new URL(urlStr);
+        } catch (MalformedURLException e) {
+            // todo:  don't remember.. initialization failure
+//            throw new
+        }
+    }
 
     /**
      * given a query string will make a web search request against bing and return a json string back

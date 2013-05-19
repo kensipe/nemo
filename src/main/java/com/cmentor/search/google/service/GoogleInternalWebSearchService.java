@@ -27,7 +27,7 @@ public class GoogleInternalWebSearchService implements GoogleInternalSearchServi
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Value("google.url")
-    private URL url;
+    private String url;
 
     /**
      * given a query string will make a web search request against google and return a json string back
@@ -57,7 +57,7 @@ public class GoogleInternalWebSearchService implements GoogleInternalSearchServi
 
     private String buildUrl(String query) {
         logger.debug("http GET request to {} with user: {}", url);
-        StringBuilder urlQuery = new StringBuilder(url.toString());
+        StringBuilder urlQuery = new StringBuilder(url);
         urlQuery.append("?v=1.0&")
                 .append(QueryParamUtil.encodeParamValue("q", query));
         String urlValue = urlQuery.toString();
