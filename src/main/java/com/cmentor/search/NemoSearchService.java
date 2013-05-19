@@ -45,7 +45,7 @@ public class NemoSearchService {
 
         if (strategies != null) {
             for (CombinerStrategy strategy : strategies) {
-                strategyMap.put(strategy.getStrategyName(), strategy);
+                strategyMap.put(strategy.strategyName(), strategy);
             }
         } else {
             logger.error("no strategies injected");

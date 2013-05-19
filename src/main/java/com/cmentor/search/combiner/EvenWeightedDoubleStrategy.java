@@ -33,7 +33,7 @@ public class EvenWeightedDoubleStrategy implements CombinerStrategy {
     }
 
     @Override
-    public String getStrategyName() {
+    public String strategyName() {
         return "even_weighted_double";
     }
 }

@@ -24,5 +24,5 @@ import java.util.Map;
 public interface CombinerStrategy {
     List<SearchResultLink> combine(Map<String, List<SearchResultLink>> resultsMap);
 
-    String getStrategyName();
+    String strategyName();
 }

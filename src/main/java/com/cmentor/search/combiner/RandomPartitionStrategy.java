@@ -53,7 +53,7 @@ public class RandomPartitionStrategy implements CombinerStrategy {
     }
 
     @Override
-    public String getStrategyName() {
+    public String strategyName() {
         return "random";
     }
 

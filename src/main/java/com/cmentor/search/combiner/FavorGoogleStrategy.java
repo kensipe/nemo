@@ -46,7 +46,7 @@ public class FavorGoogleStrategy implements CombinerStrategy {
     }
 
     @Override
-    public String getStrategyName() {
+    public String strategyName() {
         return "google_favored";
     }
 }
