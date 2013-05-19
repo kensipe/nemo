@@ -3,6 +3,7 @@ package com.cmentor.search.combiner;
 import com.cmentor.search.SearchResultLink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.Map;
  * @author kensipe
  */
 
+@Component("even_weighted_single")
 public class EvenWeightedSingleStrategy implements CombinerStrategy {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -33,5 +35,10 @@ public class EvenWeightedSingleStrategy implements CombinerStrategy {
 
         results = combiner.combine(linksMap);
         return results;
+    }
+
+    @Override
+    public String getStrategyName() {
+        return "even_weighted_single";
     }
 }

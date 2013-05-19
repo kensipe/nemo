@@ -3,6 +3,7 @@ package com.cmentor.search.combiner;
 import com.cmentor.search.SearchResultLink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +19,7 @@ import java.util.Set;
  * @author kensipe
  */
 
+@Component("random")
 public class RandomPartitionStrategy implements CombinerStrategy {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -48,6 +50,11 @@ public class RandomPartitionStrategy implements CombinerStrategy {
 
         results = combiner.combine(linksMap);
         return results;
+    }
+
+    @Override
+    public String getStrategyName() {
+        return "random";
     }
 
     private Map<String, Integer> getRandomPartitionSizeMap(Set<String> engines) {
