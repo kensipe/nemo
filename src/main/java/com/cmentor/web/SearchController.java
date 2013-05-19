@@ -42,6 +42,8 @@ public class SearchController {
             } else {
                 command.setLinks(searchService.search(q, strategy));
             }
+        } else {
+            logger.debug("search q was blank");
         }
 
         model.addAttribute("searchForm", command);
@@ -50,6 +52,7 @@ public class SearchController {
     private String verifyStrategy(String strategy) {
         String validStrategy = strategy;
         if (StringUtils.isBlank(strategy) || !isInStrategyList(strategy)) {
+            logger.debug("missing strategy");
             validStrategy = "";
         }
         return validStrategy;
