@@ -25,7 +25,7 @@ public class GoogleInternalWebSearchService implements GoogleInternalSearchServi
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Value("google.url")
+    @Value("${google.url}")
     private String url;
 
     /**

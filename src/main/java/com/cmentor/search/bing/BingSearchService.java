@@ -37,6 +37,7 @@ public class BingSearchService implements SearchService {
 
         List<BingSearchResultLink> bingLinks = getBingSearchResults(criteria);
         List<SearchResultLink> links = BingListTransformer.transform(bingLinks);
+        logger.debug("{} search results found", links.size());
         return links;
     }
 

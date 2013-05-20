@@ -32,13 +32,13 @@ public class BingInternalWebSearchService implements BingInternalSearchService {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Value("bing.user")
+    @Value("${bing.user}")
     private String user;
 
-    @Value("bing.password")
+    @Value("${bing.password}")
     private String password;
 
-    @Value("bing.url")
+    @Value("${bing.url}")
     private String urlStr;
 
     private URL url;

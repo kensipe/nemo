@@ -34,6 +34,7 @@ public class GoogleSearchService implements SearchService {
 
         List<GoogleSearchResultLink> googleLinks = getGoogleSearchResults(criteria);
         List<SearchResultLink> links = GoogleListTransformer.transform(googleLinks);
+        logger.debug("{} search results found", links.size());
         return links;
     }
 
