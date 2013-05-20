@@ -27,7 +27,7 @@
             <td style="text-align: right">strategy list:</td>
             <td>
                 <c:forEach var="strat" items="${searchForm.strategyList}">
-                    <a href="/search/index.html?q=${searchForm.q}&strategy=${strat}">${strat}</a>
+                    <a href="<%= request.getContextPath()%>/search/index.html?q=${searchForm.q}&strategy=${strat}">${strat}</a>
                 </c:forEach>
             </td>
         </tr>
