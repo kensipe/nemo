@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form action="/search/index.html" method="GET">
+<form action="<%= request.getContextPath()%>/search/index.html" method="GET">
     <input type="text" name="q"/>
     <input type="submit">
 </form>
@@ -15,13 +15,22 @@
 <div id="SearchPage" class="SearchPage">
 
     <table>
-        <tr><td style="text-align: right">query:</td><td>${searchForm.q}</td></tr>
-        <tr><td style="text-align: right">strategy:</td><td>${searchForm.strategy}</td></tr>
-        <tr><td style="text-align: right">strategy list:</td><td>
-            <c:forEach var="strat" items="${searchForm.strategyList}">
-               <a href="/search/index.html?q=${searchForm.q}&strategy=${strat}">${strat}</a>
-            </c:forEach>
-        </td></tr>
+        <tr>
+            <td style="text-align: right">query:</td>
+            <td>${searchForm.q}</td>
+        </tr>
+        <tr>
+            <td style="text-align: right">strategy:</td>
+            <td>${searchForm.strategy}</td>
+        </tr>
+        <tr>
+            <td style="text-align: right">strategy list:</td>
+            <td>
+                <c:forEach var="strat" items="${searchForm.strategyList}">
+                    <a href="/search/index.html?q=${searchForm.q}&strategy=${strat}">${strat}</a>
+                </c:forEach>
+            </td>
+        </tr>
     </table>
 
     <h3> search results </h3>
