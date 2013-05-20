@@ -7,6 +7,11 @@
 </head>
 <body>
 
+<form action="/search/index.html" method="GET">
+    <input type="text" name="q"/>
+    <input type="submit">
+</form>
+
 <div id="SearchPage" class="SearchPage">
 
     <table>
