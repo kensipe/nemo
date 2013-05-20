@@ -4,6 +4,7 @@ import com.cmentor.search.SearchResultLink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,8 +25,7 @@ public class PartitionCombiner {
      * you can control individual partition sizes through the map... otherwise it is balanced
      */
     public PartitionCombiner(Map<String, Integer> enginePartitionSizeMap) {
-        // todo:  make unmodifiable
-        this.enginePartitionSizeMap = enginePartitionSizeMap;
+        this.enginePartitionSizeMap = Collections.unmodifiableMap(enginePartitionSizeMap);
     }
 
     public PartitionCombiner() {
