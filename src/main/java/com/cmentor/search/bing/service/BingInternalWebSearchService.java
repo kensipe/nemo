@@ -48,9 +48,8 @@ public class BingInternalWebSearchService implements BingInternalSearchService {
         try {
             url = new URL(urlStr);
         } catch (MalformedURLException e) {
-            // todo:  don't remember.. initialization failure
-//            throw new
             logger.error("failure to init bing service url", e);
+            throw new IllegalStateException(e);
         }
     }
 
