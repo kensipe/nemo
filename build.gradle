@@ -13,14 +13,12 @@ repositories {
     mavenCentral()
 
     mavenRepo url: 'http://maven.springframework.org/milestone'
-    mavenRepo url: 'http://repo1.maven.org/maven2/com/thoughtworks'
 }
 
 dependencies {
 
     // spring plus web mvc
     compile "org.springframework:spring-webmvc:$springVersion"
-    compile "org.springframework:spring-jms:$springVersion"
 
     // web depends
     compile 'opensymphony:sitemesh:2.4.2'
@@ -34,7 +32,6 @@ dependencies {
 
     // java utility
     compile 'commons-lang:commons-lang:2.6'
-    compile 'commons-collections:commons-collections:3.2.1'
     compile 'com.google.guava:guava:12.0'
 
     compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.12'
@@ -42,7 +39,6 @@ dependencies {
     // http service invocation
     compile 'org.apache.httpcomponents:httpclient:4.2.2'
 
-    testCompile "org.springframework:spring-test:$springVersion"
     testCompile 'junit:junit:4.8.1'
     testCompile 'cglib:cglib-nodep:2.2.2'               // need to mock classes
 }
